@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>下载页面</title>
+</head>
+
+<body>
+	{% if song_name %}
+	{{ song_name }} - {{ artist_name }}
+	<a href="/">首页</a>
+	<ul>
+		{% if mp3_128 %}
+		{% ifequal mp3_128.rate 128 %}
+		<li>
+			一般品质  {{ mp3_128.size }}MB  mp3  {{ mp3_128.rate }}kbps
+			<a rel="noreferrer" href="{{ mp3_128.link }}">下载</a>
+		</li>
+		{% endifequal %}
+		{% endif %}
+
+		{% if mp3_192 %}
+		{% ifequal mp3_192.rate 192 %}
+		<li>
+			中等品质  {{ mp3_192.size }}MB  mp3  {{ mp3_192.rate }}kbps
+			<a rel="noreferrer" href="{{ mp3_192.link }}">下载</a>
+		</li>
+		{% endifequal %}
+		{% endif %}
+
+		{% if mp3_320 %}
+		{% ifequal mp3_320.rate 320 %}
+		<li>
+			高等品质  {{ mp3_320.size }}MB  mp3  {{ mp3_320.rate }}kbps
+			<a rel="noreferrer" href="{{ mp3_320.link }}">下载</a>
+		</li>
+		{% endifequal %}
+		{% endif %}
+
+		{% if flac %}
+		<li>
+			无损品质  {{ flac.size }}MB  flac  {{ flac.rate }}kbps
+			<a rel="noreferrer" href="{{ flac.link }}">下载</a>
+		</li>
+		{% endif %}
+	</ul>
+	{% endif %}
+</body>
+</html>

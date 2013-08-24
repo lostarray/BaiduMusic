@@ -1,0 +1,14 @@
+name: du-music
+version: 1
+
+libraries:
+- name: django
+  version: 1.5
+
+handlers:
+- url: /image/
+  static_path: static/image
+- url: /css/
+  static_path: static/css
+- url: /js/
+  static_path: static/js
