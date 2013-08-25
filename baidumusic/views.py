@@ -16,9 +16,10 @@ def home(request):
         if song_link_match:
             song_id = song_link_match.group('song_id')
             return HttpResponseRedirect('song/' + song_id)
+        elif song_link.isdigit():
+            return HttpResponseRedirect('song/' + song_link)
         else:
-            # Wrong input
-            pass
+            return render_to_response('index.html', {'input_error': True})
     return render_to_response('index.html')
 
 
