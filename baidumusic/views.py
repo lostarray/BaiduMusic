@@ -35,6 +35,7 @@ def song(request, song_id):
             if 'song_name' not in song_dict:
                 song_dict['song_name'] = song_info['songName'].encode('utf8')
                 song_dict['artist_name'] = song_info['artistName'].encode('utf8')
+                song_dict['lrc_link'] = 'http://music.baidu.com' + song_info['lrcLink']
             song_dict[key] = {
                 'size': '{:.1f}'.format(song_info['size'] / 1024.0**2),
                 'rate': song_info['rate'],

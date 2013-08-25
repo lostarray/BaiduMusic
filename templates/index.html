@@ -1,15 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>首页</title>
+	<title>百度音乐下载地址分析</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="container">
+	<div class="page-header">
+		<h1>百度音乐下载地址分析</h1>
+	</div>
+
 	<form action="" method="post">
-		<input type="text" name="song_link" id="song_link" />
-		<input type="submit" value="提交" />
+	<div class="input-group">
+		<input type="text" name="song_link" class="form-control" autofocus placeholder="请输入百度音乐链接，例如：http://music.baidu.com/song/955915" />
+		<span class="input-group-btn">
+			<button type="submit" class="btn">查找</button></span>
+		</span>
+	</div>
 	</form>
 </body>
 </html>

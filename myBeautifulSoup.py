@@ -752,7 +752,7 @@ class Tag(PageElement):
         indentTag, indentContents = 0, 0
         if prettyPrint:
             indentTag = indentLevel
-            space = ('\t' * (indentTag-1))
+            space = ('  ' * (indentTag-1))
             indentContents = indentTag + 1
         contents = self.renderContents(encoding, prettyPrint, indentContents)
         if self.hidden:
@@ -765,7 +765,7 @@ class Tag(PageElement):
             if prettyPrint:
                 s.append(space)
             s.append('<%s%s%s>' % (encodedName, attributeString, close))
-            if prettyPrint and contents:
+            if prettyPrint and (contents or close):
                 s.append("\n")
             s.append(contents)
             if prettyPrint and contents and contents[-1] != "\n":
@@ -813,7 +813,7 @@ class Tag(PageElement):
                 text = text.strip()
             if text:
                 if prettyPrint:
-                    s.append("\t" * (indentLevel-1))
+                    s.append("  " * (indentLevel-1))
                 s.append(text)
                 if prettyPrint:
                     s.append("\n")

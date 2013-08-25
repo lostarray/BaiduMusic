@@ -1,4 +1,4 @@
-name: du-music
+name: baidumusic
 version: 1
 
 libraries:
@@ -6,9 +6,13 @@ libraries:
   version: 1.5
 
 handlers:
+- url: /favicon.ico
+  static_path: static/img/favicon.ico
 - url: /image/
-  static_path: static/image
+  static_path: static/img
 - url: /css/
   static_path: static/css
 - url: /js/
   static_path: static/js
+- url: /fonts/
+  static_path: static/fonts
