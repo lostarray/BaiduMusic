@@ -1,6 +1,5 @@
 import json
 import re
-import time
 import urllib2
 from pyquery import PyQuery as pq
 
