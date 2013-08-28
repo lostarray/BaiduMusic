@@ -7,4 +7,5 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('baidumusic.views',
     url(r'^$', 'home', name='home'),
     url(r'^song/(?P<song_id>\d+)$', 'song', name='song'),
+    url(r'^search$', 'search', name='search'),
 )

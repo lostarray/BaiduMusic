@@ -1,6 +1,8 @@
 import json
 import re
+import time
 import urllib2
+from pyquery import PyQuery as pq
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -10,16 +12,6 @@ pattern = re.compile(r'(http://)?music.baidu.com/song/(?P<song_id>\d*)')
 
 
 def home(request):
-    if 'song_link' in request.POST:
-        song_link = request.POST['song_link']
-        song_link_match = pattern.match(song_link)
-        if song_link_match:
-            song_id = song_link_match.group('song_id')
-            return HttpResponseRedirect('song/' + song_id)
-        elif song_link.isdigit():
-            return HttpResponseRedirect('song/' + song_link)
-        else:
-            return render_to_response('index.html', {'input_error': True})
     return render_to_response('index.html')
 
 
@@ -45,3 +37,35 @@ def song(request, song_id):
         except:
             song_dict[key] = None
     return render_to_response('down_song.html', song_dict)
+
+
+def search(request):
+    if 'input_content' not in request.POST:
+        return HttpResponseRedirect('/')
+
+    input_content = request.POST['input_content']
+    song_link_match = pattern.match(input_content)
+    if song_link_match:
+        song_id = song_link_match.group('song_id')
+        return HttpResponseRedirect('/song/' + song_id)
+    elif input_content.isdigit():
+        return HttpResponseRedirect('/song/' + input_content)
+
+    else:
+        url = 'http://music.baidu.com/search?key=' + input_content.replace(' ', '+').encode('utf-8')
+        page = urllib2.urlopen(url)
+        d = pq(page.read().decode('utf-8'))
+        song_list = d('li.song-item-hook')
+        result = []
+
+        for song in song_list:
+            song = pq(song)
+            song_info = json.loads(song.attr('data-songitem'))['songItem']
+            song_dict = {}
+            if song('span.fun-icon > a.high-rate-icon'):
+                song_dict['link'] = '/song/' + str(song_info['sid'])
+                song_dict['song_name'] = song_info['sname']
+                song_dict['artist_name'] = song_info['author']
+                song_dict['album_name'] = song('span.album-title > a').html()
+                result.append(song_dict)
+        return render_to_response('search.html', {'result': result})

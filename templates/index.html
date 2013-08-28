@@ -3,7 +3,7 @@
 <head>
 	<title>百度音乐下载</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/v3.0.0/css/bootstrap.min.css" media="screen">
 	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
@@ -12,18 +12,17 @@
 		<h1>百度音乐下载</h1>
 	</div>
 
-	<form action="" method="post">
+	<form action="/search" method="post">
 	<div class="input-group">
-		<input type="text" name="song_link" class="form-control" autofocus placeholder="http://music.baidu.com/song/955915" />
+		<input type="text" name="input_content" class="form-control" autofocus placeholder="http://music.baidu.com/song/955915" />
 		<span class="input-group-btn">
 			<button type="submit" class="btn btn-success">查找</button>
 		</span>
 	</div>
 	</form>
+	<br>
 
-	{% if input_error %}
-	<h5 class="text-danger">输入格式错误</h5>
-	{% endif %}
-	<h5>请输入百度音乐链接或音乐ID</h5>
+	<h5>请输入百度音乐链接或音乐ID前往下载，或输入关键词进行搜索</h5>
+	<h5>目前搜索功能还比较简单，若搜索不到您要的内容，请查询百度音乐，直接输入音乐链接或ID</h5>
 </body>
 </html>
