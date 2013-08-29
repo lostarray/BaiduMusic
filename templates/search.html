@@ -17,9 +17,10 @@
 		</h1>
 	</div>
 
-	<table class="table">
+	<table class="table table-hover">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>歌名</th>
 			<th>演唱者</th>
 			<th>专辑</th>
@@ -28,12 +29,28 @@
 	</thead>
 	<tbody>
 		{% for song in result %}
+		{% if song.lyric %}
 		<tr>
+			<td rowspan="2">{{ forloop.counter }}</td>
+			<td>{{ song.song_name | safe }}</td>
+			<td>{{ song.artist_name | safe }}</td>
+			<td>{{ song.album_name | safe }}</td>
+			<td rowspan="2"><a href="{{ song.link }}">下载</a></td>
+		</tr>
+		<tr>
+			<td class="row-small" colspan="3">
+				<small>{{ song.lyric | safe }}</small>
+			</td>
+		</tr>
+		{% else %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
 			<td>{{ song.song_name | safe }}</td>
 			<td>{{ song.artist_name | safe }}</td>
 			<td>{{ song.album_name | safe }}</td>
 			<td><a href="{{ song.link }}">下载</a></td>
 		</tr>
+		{% endif %}
 		{% endfor %}
 	</tbody>
 	</table>

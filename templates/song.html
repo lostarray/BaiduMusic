@@ -17,58 +17,54 @@
 		</h1>
 	</div>
 
-	<div class="row">
-	<div class="col-lg-10">
-		<table class="table">
-		<thead>
-			<tr>
-				<th>品质</th>
-				<th>大小</th>
-				<th>类型</th>
-				<th>比特率</th>
-				<th><a rel="noreferrer" href="{{ lrc_link }}">歌词</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			{% ifequal mp3_128.rate 128 %}
-			<tr>
-				<td>一般</td>
-				<td>{{ mp3_128.size }}MB</td>
-				<td>mp3</td>
-				<td>{{ mp3_128.rate }}kbps</td>
-				<td><a rel="noreferrer" href="{{ mp3_128.link }}">下载</a></td>
-			</tr>
-			{% endifequal %}
-			{% ifequal mp3_192.rate 192 %}
-			<tr>
-				<td>中等</td>
-				<td>{{ mp3_192.size }}MB</td>
-				<td>mp3</td>
-				<td>{{ mp3_192.rate }}kbps</td>
-				<td><a rel="noreferrer" href="{{ mp3_192.link }}">下载</a></td>
-			</tr>
-			{% endifequal %}
-			{% ifequal mp3_320.rate 320 %}
-			<tr>
-				<td>高等</td>
-				<td>{{ mp3_320.size }}MB</td>
-				<td>mp3</td>
-				<td>{{ mp3_320.rate }}kbps</td>
-				<td><a rel="noreferrer" href="{{ mp3_320.link }}">下载</a></td>
-			</tr>
-			{% endifequal %}
-			{% if flac %}
-			<tr>
-				<td>无损</td>
-				<td>{{ flac.size }}MB</td>
-				<td>flac</td>
-				<td>{{ flac.rate }}kbps</td>
-				<td><a rel="noreferrer" href="{{ flac.link }}">下载</a></td>
-			</tr>
-			{% endif %}
-		</tbody>
-		</table>
-	</div>
-	</div>
+	<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>品质</th>
+			<th>大小</th>
+			<th>类型</th>
+			<th>比特率</th>
+			<th><a rel="noreferrer" href="{{ lrc_link }}">歌词</a></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% ifequal mp3_128.rate 128 %}
+		<tr>
+			<td>一般</td>
+			<td>{{ mp3_128.size }}MB</td>
+			<td>mp3</td>
+			<td>{{ mp3_128.rate }}kbps</td>
+			<td><a rel="noreferrer" href="{{ mp3_128.link }}">下载</a></td>
+		</tr>
+		{% endifequal %}
+		{% ifequal mp3_192.rate 192 %}
+		<tr>
+			<td>中等</td>
+			<td>{{ mp3_192.size }}MB</td>
+			<td>mp3</td>
+			<td>{{ mp3_192.rate }}kbps</td>
+			<td><a rel="noreferrer" href="{{ mp3_192.link }}">下载</a></td>
+		</tr>
+		{% endifequal %}
+		{% ifequal mp3_320.rate 320 %}
+		<tr>
+			<td>高等</td>
+			<td>{{ mp3_320.size }}MB</td>
+			<td>mp3</td>
+			<td>{{ mp3_320.rate }}kbps</td>
+			<td><a rel="noreferrer" href="{{ mp3_320.link }}">下载</a></td>
+		</tr>
+		{% endifequal %}
+		{% if flac %}
+		<tr>
+			<td>无损</td>
+			<td>{{ flac.size }}MB</td>
+			<td>flac</td>
+			<td>{{ flac.rate }}kbps</td>
+			<td><a rel="noreferrer" href="{{ flac.link }}">下载</a></td>
+		</tr>
+		{% endif %}
+	</tbody>
+	</table>
 </body>
 </html>
