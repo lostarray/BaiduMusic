@@ -31,7 +31,7 @@
 		<tr>
 			<td>{{ song.song_name | safe }}</td>
 			<td>{{ song.artist_name | safe }}</td>
-			<td>{% if song.album_name %} {{ song.album_name | safe }} {% endif %}</td>
+			<td>{{ song.album_name | safe }}</td>
 			<td><a href="{{ song.link }}">下载</a></td>
 		</tr>
 		{% endfor %}

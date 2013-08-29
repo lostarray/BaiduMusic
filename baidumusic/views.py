@@ -35,7 +35,7 @@ def song(request, song_id):
             }
         except:
             song_dict[key] = None
-    return render_to_response('down_song.html', song_dict)
+    return render_to_response('song.html', song_dict)
 
 
 def search(request):
@@ -52,8 +52,8 @@ def search(request):
 
     else:
         url = 'http://music.baidu.com/search?key=' + input_content.replace(' ', '+').encode('utf-8')
-        page = urllib2.urlopen(url)
-        d = pq(page.read().decode('utf-8'))
+        page = urllib2.urlopen(url).read()
+        d = pq(page.decode('utf-8'))
         song_list = d('li.song-item-hook')
         result = []
 
@@ -61,7 +61,7 @@ def search(request):
             song = pq(song)
             song_info = json.loads(song.attr('data-songitem'))['songItem']
             song_dict = {}
-            if song('span.fun-icon > a.high-rate-icon'):
+            if not song('span.icon-thirdparty'):
                 song_dict['link'] = '/song/' + str(song_info['sid'])
                 song_dict['song_name'] = song_info['sname']
                 song_dict['artist_name'] = song_info['author']
