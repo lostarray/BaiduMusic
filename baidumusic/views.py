@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import urllib2
 from pyquery import PyQuery
@@ -6,7 +7,7 @@ from pyquery import PyQuery
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-TEST = True
+TEST = False if 'SERVER_SOFTWARE' in os.environ else True
 
 search_prefix = 'http://music.baidu.com/search?key='
 song_query = 'http://music.baidu.com/data/music/fmlink?songIds={}&type={}&rate={}'

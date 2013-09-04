@@ -1,5 +1,5 @@
 name: dmusic
-version: 2
+version: 1
 
 libraries:
 - name: django

@@ -14,7 +14,7 @@
 	"content_scripts": [
 		{
 			"matches": ["http://music.baidu.com/song/*"],
-			"js": ["dmusic.js"]
+			"js": ["song.js"]
 		}
 	]
 }

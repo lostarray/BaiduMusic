@@ -5,7 +5,9 @@
 	{% include "head.html" %}
 </head>
 
-<body class="container">
+<body>
+<div id="wrap">
+<div class="container">
 	<div class="page-header">
 		<h1>
 			{{ song_name }} - {{ artist_name }}
@@ -65,8 +67,10 @@
 	</tbody>
 	</table>
 
-	<p>
-		<em>若音乐无法下载，请直接右键保存，或复制下载链接，输入到浏览器地址栏中</em>
-	</p>
+	<p><em>若音乐无法下载，请直接右键保存，或复制下载链接，输入到浏览器地址栏中</em></p>
+</div>
+</div>
+
+{% include "footer.html" %}
 </body>
 </html>

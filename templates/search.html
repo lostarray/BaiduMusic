@@ -5,7 +5,9 @@
 	{% include "head.html" %}
 </head>
 
-<body class="container">
+<body>
+<div id="wrap">
+<div class="container">
 	<div class="page-header">
 		<h1>
 			搜索结果
@@ -52,5 +54,9 @@
 		{% endfor %}
 	</tbody>
 	</table>
+</div>
+</div>
+
+{% include "footer.html" %}
 </body>
 </html>

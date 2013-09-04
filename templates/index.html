@@ -5,7 +5,9 @@
 	{% include "head.html" %}
 </head>
 
-<body class="container">
+<body>
+<div id="wrap">
+<div class="container">
 	<div class="page-header">
 		<h1>百度音乐下载</h1>
 	</div>
@@ -24,5 +26,16 @@
 		<strong>目前搜索功能还比较简单，若搜索不到您要的内容，请查询百度音乐，直接输入音乐链接或ID</strong><br>
 		<strong>为保证使用体验，建议使用非IE内核的浏览器，如Chrome、Firefox、Safari等</strong>
 	</p>
+	<br>
+
+	<p>
+		<a href="/plugin/chrome/dmusic.crx" class="btn btn-primary">Chrome插件</a>&nbsp;&nbsp;&nbsp;
+		<a href="http://jingyan.baidu.com/article/e5c39bf56286ae39d6603374.html" target="_blank" class="btn btn-link">安装帮助</a>
+		<a href="http://pan.baidu.com/share/link?shareid=334598046&uk=3423441618" target="_blank" class="btn btn-link">使用说明</a>
+	</p>
+</div>
+</div>
+
+{% include "footer.html" %}
 </body>
 </html>
