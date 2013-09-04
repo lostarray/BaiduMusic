@@ -6,7 +6,7 @@ from pyquery import PyQuery
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-localhost = False
+TEST = True
 
 search_prefix = 'http://music.baidu.com/search?key='
 song_query = 'http://music.baidu.com/data/music/fmlink?songIds={}&type={}&rate={}'
@@ -14,7 +14,7 @@ pattern = re.compile(r'(http://)?music.baidu.com/song/(?P<song_id>\d*)')
 
 
 def home(request):
-    return render_to_response('index.html', {'localhost': localhost})
+    return render_to_response('index.html', {'TEST': TEST})
 
 
 def song(request, song_id):
@@ -40,10 +40,10 @@ def song(request, song_id):
             song_dict[key] = None
 
     if 'song_name' in song_dict:
-        song_dict['localhost'] = localhost
+        song_dict['TEST'] = TEST
         return render_to_response('song.html', song_dict)
     else:
-        return render_to_response('error.html', {'localhost': localhost})
+        return render_to_response('error.html', {'TEST': TEST})
 
 
 def search(request):
@@ -54,9 +54,9 @@ def search(request):
     song_link_match = pattern.match(input_content)
     if song_link_match:
         song_id = song_link_match.group('song_id')
-        return HttpResponseRedirect('/song/' + song_id, {'localhost': localhost})
+        return HttpResponseRedirect('/song/' + song_id, {'TEST': TEST})
     elif input_content.isdigit():
-        return HttpResponseRedirect('/song/' + input_content, {'localhost': localhost})
+        return HttpResponseRedirect('/song/' + input_content, {'TEST': TEST})
 
     else:
         url = search_prefix + input_content.replace(' ', '+').encode('utf-8')
@@ -64,7 +64,7 @@ def search(request):
         d = PyQuery(page.decode('utf-8'))
         song_list = d('li.song-item-hook')
         if not song_list:
-            return render_to_response('error.html', {'localhost': localhost})
+            return render_to_response('error.html', {'TEST': TEST})
         result = []
 
         for song in song_list:
@@ -79,4 +79,4 @@ def search(request):
                 lyric = song('div.lyric-item').html()
                 song_dict['lyric'] = lyric.strip().replace('\n', ' ') if lyric else None
                 result.append(song_dict)
-        return render_to_response('search.html', {'result': result, 'localhost': localhost})
+        return render_to_response('search.html', {'result': result, 'TEST': TEST})

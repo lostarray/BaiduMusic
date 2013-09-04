@@ -1,9 +1,19 @@
 name: dmusic
-version: 1
+version: 2
 
 libraries:
 - name: django
   version: "1.5"
-
 - name: lxml
   version: "2.3.4"
+
+handlers:
+- url: /favicon.ico
+  static_path: favicon.ico
+- url: /static/
+  static_path: static
+
+- url: /plugin/chrome/dmusic.crx
+  static_path: plugin/chrome/dmusic.crx
+- url: /plugin/chrome/update.xml
+  static_path: plugin/chrome/update.xml
