@@ -34,7 +34,7 @@
 			<td>{{ mp3_128.size }}MB</td>
 			<td>mp3</td>
 			<td>{{ mp3_128.rate }}kbps</td>
-			<td><a rel="noreferrer" href="{{ mp3_128.link }}">下载</a></td>
+			<td><a rel="noreferrer" href="{{ mp3_128.link }}" onclick="setTimeout(function() { _gaq.push(['_trackEvent', '音乐', '下载', '{{ song_name }} - {{ artist_name }}']); }, 200);">下载</a></td>
 		</tr>
 		{% endifequal %}
 		{% ifequal mp3_192.rate 192 %}
@@ -43,7 +43,7 @@
 			<td>{{ mp3_192.size }}MB</td>
 			<td>mp3</td>
 			<td>{{ mp3_192.rate }}kbps</td>
-			<td><a rel="noreferrer" href="{{ mp3_192.link }}">下载</a></td>
+			<td><a rel="noreferrer" href="{{ mp3_192.link }}" onclick="setTimeout(function() { _gaq.push(['_trackEvent', '音乐', '下载', '{{ song_name }} - {{ artist_name }}']); }, 200);">下载</a></td>
 		</tr>
 		{% endifequal %}
 		{% ifequal mp3_320.rate 320 %}
@@ -52,7 +52,7 @@
 			<td>{{ mp3_320.size }}MB</td>
 			<td>mp3</td>
 			<td>{{ mp3_320.rate }}kbps</td>
-			<td><a rel="noreferrer" href="{{ mp3_320.link }}">下载</a></td>
+			<td><a rel="noreferrer" href="{{ mp3_320.link }}" onclick="setTimeout(function() { _gaq.push(['_trackEvent', '音乐', '下载', '{{ song_name }} - {{ artist_name }}']); }, 200);">下载</a></td>
 		</tr>
 		{% endifequal %}
 		{% if flac %}
@@ -61,7 +61,7 @@
 			<td>{{ flac.size }}MB</td>
 			<td>flac</td>
 			<td>{{ flac.rate }}kbps</td>
-			<td><a rel="noreferrer" href="{{ flac.link }}">下载</a></td>
+			<td><a rel="noreferrer" href="{{ flac.link }}" onclick="setTimeout(function() { _gaq.push(['_trackEvent', '音乐', '下载', '{{ song_name }} - {{ artist_name }}']); }, 200);">下载</a></td>
 		</tr>
 		{% endif %}
 	</tbody>
